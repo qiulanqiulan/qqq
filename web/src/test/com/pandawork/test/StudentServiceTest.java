@@ -51,5 +51,9 @@ public class StudentServiceTest extends AbstractTestCase{
         std.setGrade(3);
         studentService.update(std);
     }
+    @Test
+    public void testQueryById() throws SSException{
+        System.out.println(studentService.queryById(3));
+    }
 
 }

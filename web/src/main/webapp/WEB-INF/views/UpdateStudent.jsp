@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: pc
@@ -12,14 +13,16 @@
 </head>
 <body>
 <form action="${website}/Student/update/${id}" method="post">
-  学号<input name="studentNum" type="text" value="11111" /><br>
-  姓名<input name="studentName" type="text" value="${param.studentName}"/><br>
+
+  学号<input name="studentNum" type="text"  /><br>
+  姓名<input name="studentName" type="text"/><br>
   性别<input name="sex" type="text"/><br>
   年级<input name="grade" type="text"/><br>
   班级<input name="classNum" type="text"/><br>
   college<input name="college" type="text"/><br>
   生日<input name="birthday" type="text"/><br>
   是/不是好学生学号<input name="goodStudent" type="text"/><br>
+
   <input type="submit" value="修改"/><br>
 </form>
 </body>

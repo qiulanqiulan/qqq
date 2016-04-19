@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,8 +44,9 @@ public class StudentController extends AbstractController {
         return "NewStudent";
     }
 
-    @RequestMapping(value ="UpdateStudent",method =RequestMethod.GET)
-    public String toUpdateStudent(){
+    @RequestMapping(value = "/UpdateStudent/{id}" ,method = RequestMethod.GET)
+    public String toUpdateStudent(@PathVariable("id")int id, RedirectAttributes redirectAttributes){
+        redirectAttributes.addAttribute("id", id);
         return "UpdateStudent";
     }
 
@@ -94,14 +98,31 @@ public class StudentController extends AbstractController {
      * @return
      * @throws SSException
      */
-    @RequestMapping(value="update/${id}")
-     public String updateStudent(@PathVariable("id") int id, Student student) throws SSException {
+    @RequestMapping(value="update/{id}", method = RequestMethod.POST)
+     public String updateStudent(@PathVariable("id") int id,
+                                 @PathVariable("studentNum") int studentNum,
+                                 @PathVariable("studentName") String studentName,
+                                 @PathVariable("sex") int sex,
+                                 @PathVariable("grade") int grade,
+                                 @PathVariable("classNum") int classNum,
+                                 @PathVariable("college") int college,
+                                 @PathVariable("birthday") Date birthday,
+                                 @PathVariable("goodStudent") int goodStudent,
+                                 Student student) throws SSException {
         if(!Assert.isNotNull(student)){
             return null ;
         }
-        Student std = studentService.queryById(id);
+
         try {
-            studentService.update(std);
+            student.setStudentNum(studentNum);
+            student.setStudentName(studentName);
+            student.setSex(sex);
+            student.setGrade(grade);
+            student.setClassNum(classNum);
+            student.setCollege(college);
+            student.setBirthday(birthday);
+            student.setGoodStudent(goodStudent);
+            studentService.update(student);
             return "redirect:/Student/list";
         }catch (Exception e){
             LogClerk.errLog.error(e);
@@ -109,4 +130,21 @@ public class StudentController extends AbstractController {
             return ADMIN_SYS_ERR_PAGE;
         }
     }
+//    @RequestMapping(value = "query/${id}")
+//    public String queryById(@PathVariable("id") int id, Model model)throws SSException{
+//        if(Assert.lessOrEqualZero(id)){
+//            return null;
+//        }
+//        Student student = null;
+//        try {
+//            student=studentService.queryById(id);
+//            model.addAttribute("stdList",student);
+//
+//        }catch (Exception e){
+//            LogClerk.errLog.error(e);
+//            sendErrMsg(e.getMessage());
+//            return ADMIN_SYS_ERR_PAGE;
+//        }
+//        return "UpdateStudent";
+//    }
 }

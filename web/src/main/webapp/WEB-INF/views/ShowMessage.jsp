@@ -38,7 +38,7 @@
       <td>${studentList.birthday}</td>
       <td>${studentList.goodStudent}</td>
       <td><a href="${website}Student/delete/${studentList.id}" /> delete </td>
-      <td><a href="${website}Student/UpdateStudent?id=${studentList.id}" > update</a> </td>
+      <td><a href="${website}Student/UpdateStudent/${studentList.id}"/>  update </td>
     </tr>
   </c:forEach>
 </form>
