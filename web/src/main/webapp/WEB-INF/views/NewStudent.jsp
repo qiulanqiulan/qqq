@@ -11,7 +11,7 @@
     <title>添加学生信息</title>
 </head>
 <body>
-<form action="${website}/Student/insert" method="post">
+<form action="${website}student/insert" method="post">
   学号<input name="studentNum" type="text" /><br>
   姓名<input name="studentName" type="text"/><br>
   性别<input name="sex" type="text"/><br>

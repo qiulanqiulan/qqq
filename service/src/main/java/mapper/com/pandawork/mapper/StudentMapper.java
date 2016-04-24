@@ -5,9 +5,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * student mapper层
  * Created by qiulan on 2016/3/31.
  */
 public interface StudentMapper {
+
     /**
      * 根据id查询学生
      * @param id

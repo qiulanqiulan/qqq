@@ -8,76 +8,120 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
+ * 学生实体类
  * Created by qiulan on 2016/3/31.
  */
 @Table(name="t_student")
 @Entity
-public  class Student extends AbstractEntity {
+public class Student extends AbstractEntity {
     @Id
-    private int id;
+    private Integer id;
 
+    //学生学号
     @Column(name="student_num")
-    private int studentNum;
+    private Integer studentNum;
 
+    //学生姓名
     @Column(name = "name")
     private String studentName;
 
+    //学生性别
     @Column(name = "sex")
-    private int sex;
+    private Integer sex;
 
+    //学生年级
     @Column(name="grade")
-    private int grade;
+    private Integer grade;
 
+    //学生班级
     @Column(name="class_num")
-    private int classNum;
+    private Integer classNum;
 
+    //学生学院代码
     @Column(name="college")
-    private int college;
+    private Integer college;
 
+    //学生生日
     @Column(name="birthday")
     private Date birthday;
 
+    //学生是否为好学生
     @Column(name="is_good_student")
-    private int goodStudent;
+    private Integer goodStudent;
 
-    public void setGoodStudent(int goodStudent) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Integer getStudentNum() {
+        return studentNum;
+    }
+
+    public void setStudentNum(Integer studentNum) {
+        this.studentNum = studentNum;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Integer getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
+
+    public Integer getClassNum() {
+        return classNum;
+    }
+
+    public void setClassNum(Integer classNum) {
+        this.classNum = classNum;
+    }
+
+    public Integer getCollege() {
+        return college;
+    }
+
+    public void setCollege(Integer college) {
+        this.college = college;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Integer getGoodStudent() {
+        return goodStudent;
+    }
+
+    public void setGoodStudent(Integer goodStudent) {
         this.goodStudent = goodStudent;
     }
 
-    public int getGoodStudent() {return goodStudent;}
-
-    public int getId() {return id;}
-
-    public void setId(int id) {this.id = id;}
-
-    public int getStudentNum() {return studentNum;}
-
-    public void setStudentNum(int studentNum) {this.studentNum = studentNum;}
-
-    public String getStudentName() {return studentName;}
-
-    public void setStudentName(String studentName) {this.studentName = studentName;}
-
-    public int getSex() {return sex;}
-
-    public void setSex(int sex) {this.sex = sex;}
-
-    public int getGrade() {return grade;}
-
-    public void setGrade(int grade) {this.grade = grade;}
-
-    public int getClassNum() {return classNum;}
-
-    public void setClassNum(int classNum) {this.classNum = classNum;}
-
-    public int getCollege() {return college;}
-
-    public void setCollege(int college) {this.college = college;}
-
-    public Date getBirthday() {return birthday;}
-
-    public void setBirthday(Date birthday) {this.birthday = birthday;}
-
     @Override
-    public void setId(Integer integer) {}
+    public void setId(Integer integer) {
+    }
 }

@@ -7,7 +7,7 @@
     <select id="queryById" resultMap="pw.Student">
         SELECT *
         FROM `t_student`
-        WHERE `id`=#{id}
+        WHERE `id` = #{id}
     </select>
 
     <select id="listAll" resultMap="pw.Student">
@@ -18,29 +18,29 @@
     <select id="deleteById" resultMap="pw.Student">
         DELETE
         FROM `t_student`
-        WHERE `id`=#{id}
+        WHERE `id` = #{id}
     </select>
 
     <insert id="insert" >
        INSERT INTO `t_student`
-       (student_num,student_name,sex,grade,class_num,college,birthday,is_good_student)
-       VALUES (#{student.studentNum},#{student.studentName},
-               #{student.sex},#{student.grade},
-               #{student.classNum},#{student.college},
-               #{student.birthday},#{student.goodStudent})
+       (`student_num`, `student_name`, `sex`, `grade`, `class_num`, `college`, `birthday`, `is_good_student`)
+       VALUES (#{student.studentNum}, #{student.studentName},
+               #{student.sex}, #{student.grade},
+               #{student.classNum}, #{student.college},
+               #{student.birthday}, #{student.goodStudent})
     </insert>
 
     <update id="update">
         UPDATE `t_student`
-        SET `student_num`=#{student.studentNum},
-            `student_name`=#{student.studentName},
-            `sex`=#{student.sex},
-            `grade`=#{student.grade},
-            `class_num`=#{student.classNum},
-            `college`=#{student.college},
-            `birthday`=#{student.birthday},
-            `is_good_student`=#{student.goodStudent}
-        WHERE `id`=#{student.id}
+        SET `student_num` = #{student.studentNum},
+            `student_name` = #{student.studentName},
+            `sex` = #{student.sex},
+            `grade` = #{student.grade},
+            `class_num` = #{student.classNum},
+            `college` = #{student.college},
+            `birthday` = #{student.birthday},
+            `is_good_student` = #{student.goodStudent}
+        WHERE `id` = #{student.id}
     </update>
 
 </mapper>

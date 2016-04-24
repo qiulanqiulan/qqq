@@ -13,7 +13,7 @@
 </head>
 <body>
 <table border="1">
-<form method="post" action="${website}/Student/list">
+<form method="post" action="${website}/student/list">
   <tr>
     <th>序号</th>
     <th>学号</th>
@@ -37,12 +37,13 @@
       <td>${studentList.college}</td>
       <td>${studentList.birthday}</td>
       <td>${studentList.goodStudent}</td>
-      <td><a href="${website}Student/delete/${studentList.id}" /> delete </td>
-      <td><a href="${website}Student/UpdateStudent/${studentList.id}"/>  update </td>
+      <td><a href="${website}student/delete/${studentList.id}" /> delete </td>
+      <td><a href="${website}student/change/${studentList.id}" />  update </td>
     </tr>
   </c:forEach>
 </form>
-  <a href="/Student/NewStudent" > insert </a>
+  <td><a href="${website}student/query" />query </td>
+  <a href="/student/new" > insert </a>
 </table>
 </body>
 </html>

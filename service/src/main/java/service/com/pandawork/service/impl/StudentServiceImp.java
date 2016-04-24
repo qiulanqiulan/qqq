@@ -1,7 +1,9 @@
 package com.pandawork.service.impl;
 
 import com.pandawork.common.entity.Student;
+import com.pandawork.common.utils.NFException;
 import com.pandawork.core.common.exception.SSException;
+import com.pandawork.core.common.log.LogClerk;
 import com.pandawork.core.common.util.Assert;
 import com.pandawork.mapper.StudentMapper;
 import com.pandawork.service.StudentService;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * student service实现
  * Created by qiulan on 2016/3/31.
  */
 @Service("studentService")
@@ -23,18 +26,16 @@ public class StudentServiceImp implements StudentService {
      * @return
      * @throws SSException
      */
-
     @Override
-    public Student queryById(int id) throws SSException{
-
+    public Student queryById(int id) throws SSException {
         if(Assert.lessOrEqualZero(id)){  //id为0或者为负数
             return null;
         }
         try{
-            return studentmapper.queryById( id);
+            return studentmapper.queryById(id);
         }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
         }
     }
 
@@ -43,16 +44,16 @@ public class StudentServiceImp implements StudentService {
      * @param student
      * @throws SSException
      */
-
     @Override
-    public void update(Student student) throws SSException {
+    public void update(Student student) throws SSException{
         if(!Assert.isNotNull(student)){
             return ;
         }
         try{
             studentmapper.update(student);
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (Exception e) {
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
         }
     }
 
@@ -61,18 +62,17 @@ public class StudentServiceImp implements StudentService {
      * @param id
      * @throws SSException
      */
-
     @Override
-    public boolean deleteById(int id) throws SSException {
+    public boolean deleteById(int id) throws SSException{
         if(Assert.lessOrEqualZero(id)){
             return false;
         }
         try{
-           studentmapper.deleteById(id);
+            studentmapper.deleteById(id);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
         }
     }
 
@@ -81,14 +81,13 @@ public class StudentServiceImp implements StudentService {
      * @return
      * @throws SSException
      */
-
     @Override
     public List<Student> listAll() throws  SSException{
         try {
-          return studentmapper.listAll();
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            return studentmapper.listAll();
+        }catch (Exception e) {
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
         }
     }
 
@@ -97,16 +96,16 @@ public class StudentServiceImp implements StudentService {
      * @param student
      * @throws Exception
      */
-
     @Override
-    public void insert(Student student) throws SSException {
+    public void insert(Student student) throws SSException{
         if(!Assert.isNotNull(student)){
             return;
         }
         try{
             studentmapper.insert(student);
         }catch (Exception e){
-            e.printStackTrace();
+            LogClerk.errLog.error(e);
+            throw SSException.get(NFException.SystemException, e);
         }
     }
 }
